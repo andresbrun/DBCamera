@@ -194,14 +194,17 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (DBCameraGridView *) cameraGridView
 {
+    DBCameraView *camera =_customCamera ?: _cameraView;
+    
     if ( !_cameraGridView ) {
-        DBCameraView *camera =_customCamera ?: _cameraView;
         _cameraGridView = [[DBCameraGridView alloc] initWithFrame:camera.previewLayer.frame];
         [_cameraGridView setNumberOfColumns:2];
         [_cameraGridView setNumberOfRows:2];
         [_cameraGridView setAlpha:0];
     }
 
+    [_cameraGridView setFrame:camera.previewLayer.frame];
+    
     return _cameraGridView;
 }
 
